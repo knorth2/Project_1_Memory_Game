@@ -2,7 +2,7 @@
 
 //Make array of cards
 //Declare variables:  memory values array = [], cards flipped, players Turn, player1 score, player2 score, etc
-//shuffle cards function using loop(while?) to iterate through array of cards. Use math.floor(math.random())
+//shuffle cards function using loop to iterate through array of cards. Use math.floor(math.random())
 //Set up board using for loop to iterate through card array and push in to string? output set to gameboard div? connect to start game somehow.
 
 //Game play: several functions with conditionals. create array to hold value of 2 cards that are flipped. If they match, the appropriate player's score is increased and it's the next player's turn. If they don't match, the next player goes. Players turn variable is increased next player is up, use setTimeout method.
@@ -17,10 +17,25 @@
 //Card Array
 const cardsArray = ['🍕', '🥐', '🍷', '🍯', '🍦', '🦪', '🥟', '🌯', '🥓', '🍄', '🥑', '🫒'];
 
+let firstGuess = ""
+let secondGuess = ""
+let count = ""
+
+const game = document.querySelector('#game')
+const grid = document.createElement('section')
+grid.setAttribute('class', 'grid')
+game.appendChild(grid)
+
 const gameGrid = cardsArray //make 24 cards on the grid. 2 of each by using .concat to join 2 strings.
 .concat(cardsArray)
 console.log(gameGrid)
 
+//Shuffle gameGrid
+
+gameGrid.forEach(output => {
+    output += Math.floor(Math.random() * gameGrid.length)
+    console.log(output)
+})
 
 
 
