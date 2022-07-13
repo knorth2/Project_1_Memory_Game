@@ -14,6 +14,16 @@
 //inable start button once clicked.
 //link new board once shuffled to start game.
 
+//Card Array
+const cardsArray = ['🍕', '🥐', '🍷', '🍯', '🍦', '🦪', '🥟', '🌯', '🥓', '🍄', '🥑', '🫒'];
+
+const gameGrid = cardsArray //make 24 cards on the grid. 2 of each by using .concat to join 2 strings.
+.concat(cardsArray)
+console.log(gameGrid)
+
+
+
+
 
 
 
