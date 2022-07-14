@@ -4,3 +4,36 @@ body {
   
   background: aquamarine;
 }
+h1{
+text-align: center;
+font-size: 50px;
+}
+
+.grid {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+} 
+
+.card {
+  position: relative;
+  transition: all .4s linear;
+  transform-style: preserve-3d;
+  margin: 5px;
+}
+
+.card,
+.front {
+  height: 150px;
+  width: 150px;
+}
+
+.front { 
+  background: black;
+  background-size: cover;
+}
+
+
+

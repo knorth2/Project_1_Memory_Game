@@ -20,7 +20,9 @@ const cardsArray = ['🍕', '🥐', '🍷', '🍯', '🍦', '🦪', '🥟', '�
 //global variables
 let firstGuess = ""
 let secondGuess = ""
-let count = ""
+let nextTurn = 0
+let player1Score = 1
+let player2Score = 1
 
 //create grid class
 const game = document.querySelector('#game')
@@ -58,8 +60,10 @@ card.appendChild(back)
 
 })
 
-
-
+//create players
+//create matched function
+//create reset function
+//create event listener for card clicks with flip and start button
 
 
 
