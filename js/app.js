@@ -11,34 +11,52 @@
 //How to determine players turn it is???  If playersTurn % 2 === 0, playerID = 1  else playerID = 2
 //reset button add eventListener function
 //make start/play button function with event listener that asks for names for both players, add conditionals etc.
-//inable start button once clicked.
+//enable start button once clicked.
 //link new board once shuffled to start game.
 
 //Card Array
 const cardsArray = ['🍕', '🥐', '🍷', '🍯', '🍦', '🦪', '🥟', '🌯', '🥓', '🍄', '🥑', '🫒'];
 
+//global variables
 let firstGuess = ""
 let secondGuess = ""
 let count = ""
 
+//create grid class
 const game = document.querySelector('#game')
 const grid = document.createElement('section')
 grid.setAttribute('class', 'grid')
 game.appendChild(grid)
 
+//set up board/grid
 const gameGrid = cardsArray //make 24 cards on the grid. 2 of each by using .concat to join 2 strings.
 .concat(cardsArray)
 console.log(gameGrid)
 
 //Shuffle gameGrid
-
 gameGrid.forEach(output => {
     output += Math.floor(Math.random() * gameGrid.length)
     console.log(output)
+
+
+//create cards 
+
+const card = document.createElement('div')
+card.setAttribute('class', 'card')
+
+const front = document.createElement('div')
+front.setAttribute('class', 'front')
+
+const back = document.createElement('div')
+back.setAttribute('class', 'back')
+
+// append to grid, append front and back to card.
+
+grid.appendChild(card)
+card.appendChild(front)
+card.appendChild(back)
+
 })
-
-
-
 
 
 
