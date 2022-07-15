@@ -70,7 +70,7 @@ function match (){
     })
 }
 
-//create reset function to flip unmatched cards back over, remove method?? 
+//create reset function to flip unmatched cards back over, removeAttribute method?? 
 
 function resetCards(){
     const selected = document.querySelectorAll('.selected')
@@ -79,9 +79,12 @@ function resetCards(){
     })
 }
 
-//Create event listener for cards(grid) and set them to a variable so I can target them easier for game play. 
+//Create event listener for cards(grid) and set them to a variable so I can target them easier for game play. Make conditionals so when clicked it runs match and resetCards Functions.
 
-
+grid.addEventListener('click', event =>{
+    const clicked = event.target
+    if(clicked.selected === ??????????)
+})
 
 
 
