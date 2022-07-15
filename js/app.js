@@ -60,11 +60,26 @@ card.appendChild(back)
 
 })
 
-//create players
-//create matched function
-//create reset function
-//create event listener for card clicks with flip and start button
 
+//create players
+
+//created matched function and set a class of 'match' on the card variable. To target each card run through a loop to setAttribute via DOM.
+function match (){
+    const selected = document.querySelectorAll('.selected')
+    selected.forEach(card => {
+        card.setAttribute('class', 'match')    
+    })
+}
+
+
+//create reset function
+
+//Create event listener for cards(grid) and set them to a variable so I can target them easier for game play. 
+
+// grid.addEventListener('click', event =>{
+//     const clicked = event.target
+//     if()
+// })
 
 
 
