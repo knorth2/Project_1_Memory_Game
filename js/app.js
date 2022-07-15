@@ -60,7 +60,6 @@ card.appendChild(back)
 
 })
 
-
 //create players
 
 //created matched function and set a class of 'match' on the card variable. To target each card run through a loop to setAttribute via DOM.
@@ -71,15 +70,18 @@ function match (){
     })
 }
 
+//create reset function to flip unmatched cards back over, remove method?? 
 
-//create reset function
+function resetCards(){
+    const selected = document.querySelectorAll('.selected')
+    selected.forEach(card =>{
+        card.removeAttribute('.selected')
+    })
+}
 
 //Create event listener for cards(grid) and set them to a variable so I can target them easier for game play. 
 
-// grid.addEventListener('click', event =>{
-//     const clicked = event.target
-//     if()
-// })
+
 
 
 
