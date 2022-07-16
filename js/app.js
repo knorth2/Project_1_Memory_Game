@@ -20,10 +20,12 @@ const cardsArray = ['🍕', '🥐', '🍷', '🍯', '🍦', '🦪', '🥟', '�
 //global variables
 let firstGuess = ''
 let secondGuess = ''
-let nextTurn = 0
+let count = 0
 let previousCard = null
 let player1Score = 1
 let player2Score = 1
+
+const startButton = document.querySelector('.start')
 
 //create grid class
 const game = document.querySelector('#game')
@@ -38,7 +40,7 @@ console.log(gameGrid)
 
 //Shuffle gameGrid
 gameGrid.forEach(output => {
-    output += Math.floor(Math.random() * gameGrid.length)
+    output += Math.floor(Math.random() * gameGrid.length / 2)
     console.log(output)
 
 
@@ -53,6 +55,7 @@ front.setAttribute('class', 'front')
 
 const back = document.createElement('div')
 back.setAttribute('class', 'back')
+// back.style.backgroundColor = yellow
 
 // append to grid, append front and back to card.
 
@@ -64,34 +67,81 @@ card.appendChild(back)
 
 //create players
 
+
+
 //created matched function and set a class of 'match' on the card variable. To target each card run through a loop to setAttribute via DOM.
-function match (){
-    const selected = document.querySelectorAll('.selected')
+function match(){
+    const selected = document.querySelectorAll('.selected');
     selected.forEach(card => {
-        card.setAttribute('class', 'match')    
-    })
-}
+      card.setAttribute('class', 'match');
+    });
+  };
+  
+
 
 //create reset function to flip unmatched cards back over, removeAttribute method?? 
 
 function resetCards(){
-    const selected = document.querySelectorAll('.selected')
-    selected.forEach(card =>{
-        card.removeAttribute('.selected')
-    })
-}
+    firstGuess = '';
+    secondGuess = '';
+    count = 0;
+    previousCard = null;
+  
+    const selected = document.querySelectorAll('.selected');
+    selected.forEach(card => {
+      card.removeAttribute('.selected');
+    });
+  };
 
 //Create event listener for cards(grid) and set them to a variable so I can target them easier for game play. Make conditionals so when clicked it runs match and resetCards Functions.
+  
+  grid.addEventListener('click', event => {
+  
+    const clicked = event.target;
+  
+    if (
+      clicked.nodeName === 'section' ||
+      clicked === previousCard ||
+      clicked.parentNode.classList.contains('selected') ||
+      clicked.parentNode.classList.contains('match')
+    ) {
+      return;
+    }
+  
+    if (count < 2) {
+      count++;
+      if (count === 1) {
+        firstGuess = clicked.parentNode.dataset.img;
+        console.log(firstGuess);
+        clicked.parentNode.classList.add('selected');
+      } else {
+        secondGuess = clicked.parentNode.dataset.img;
+        console.log(secondGuess);
+        clicked.parentNode.classList.add('selected');
+      }
+  
+      if (firstGuess && secondGuess) {
+        if (firstGuess === secondGuess) {
+          setTimeout(match, 1000);
+        }
+        setTimeout(resetCards, 1000);
+      }
+      previousCard = clicked;
+    }
+  
+  });
 
-grid.addEventListener('click', event =>{
-    const clicked = event.target
-    // if(clicked.selected === )   //
-})
+// startGame(){
+//     match()
+//     resetCards()
+// };
 
-
-
-
-
+//   startButton.addEventListener('click', (event) =>{
+//     this.name = prompt('Ready to concentrate?')
+//     alert(`Hello, ${this.name}!`)
+//     event.target.disabled = true; //turn off start button
+//     startGame()
+// })
 
 
 
