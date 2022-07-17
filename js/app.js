@@ -37,14 +37,16 @@ const getImages = () => [
 
 //global variables
 let playerName = null
+let playerTurn = 0
 let player1Score = 1
 let player2Score = 1
 
 //Grab from HTML via DOM
 const startButton = document.querySelector('.start')
+const grid = document.querySelector('section')
 const playerOne = document.querySelector('.playerOne')
 const playerTwo = document.querySelector('.playerTwo')
-const grid = document.querySelector('section')
+
 
 
 //radomize the cards-updated by putting in a function so I can use it easier, also decided not to concat array, might change mind later for dryer code.
@@ -101,15 +103,28 @@ const checkCards = event =>{
     const flippedCards = document.querySelectorAll(".flipped")
 
     //game logic 
-    
+    if(flippedCards.length === 2){ // two cards flipped (it adds a class 'flipped), check by attribute name and since it is an array of objects use index number
+        if(flippedCards[0].getAttribute("name") === flippedCards[1].getAttribute("name")){
+
+        }
+    }
 }
 
+ //create players 
+const currentPlayer = () =>{
+    if(playerTurn %2 === 0){
+        playerName = 1
+    }else{
+        playerName = 2
+        // console.log(playerName)
+    }
+}
 
 createCards()
 
 
   
- //create players 
+
     
 
 
