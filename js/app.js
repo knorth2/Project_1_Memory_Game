@@ -46,21 +46,17 @@ let player2Score = 1
 const startButton = document.querySelector('.start')
 const playerOne = document.querySelector('.playerOne')
 const playerTwo = document.querySelector('.playerTwo')
-const game = document.querySelector('#game')
-//create grid class
-const grid = document.createElement('section')
-grid.setAttribute('class', 'grid')
-game.appendChild(grid)
+const grid = document.querySelector('section')
 
-//set up board/grid
-const gameGrid = cardsArray //make 24 cards on the grid. 2 of each by using .concat to join 2 strings.
-.concat(cardsArray)
-console.log(gameGrid)
 
-//Shuffle gameGrid
-gameGrid.forEach(output => {
-    output += Math.floor(Math.random() * gameGrid.length / 2)
-    console.log(output)
+//radomize the cards-updated by putting in a function so I can use it easier, also decided not to concat array, might change mind later for dryer code.
+const randomize = () => {
+    const cardData = getImages();
+    cardData.sort(() => Math.random() - 0.5); 
+    return cardData;
+    // console.log(cardData)
+};
+// randomize();
 
 
 //create cards 
@@ -74,7 +70,7 @@ front.setAttribute('class', 'front')
 
 const back = document.createElement('div')
 back.setAttribute('class', 'back')
-// back.style.backgroundColor = yellow
+
 
 // append to grid, append front and back to card.
 
