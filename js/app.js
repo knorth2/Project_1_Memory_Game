@@ -59,27 +59,35 @@ const randomize = () => {
 // randomize();
 
 
-//create cards 
+//create cards and call randomize function to get shuffled version of the cards
 
-const card = document.createElement('div')
-card.setAttribute('class', 'card')
-card.dataset.img = output  //link the image to the card using dataset to the shuffled array targeting output variable.
-
-const front = document.createElement('div')
-front.setAttribute('class', 'front')
-
-const back = document.createElement('div')
-back.setAttribute('class', 'back')
-
-
-// append to grid, append front and back to card.
-
-grid.appendChild(card)
-card.appendChild(front)
-card.appendChild(back)
-
-})
-
+const createCards = () =>{
+    const cardData = randomize();
+    // console.log(cardData)
+    //need to run through loop here to go through all 16 cards??
+cardData.forEach((item)=>{ //add index to setAttribute "name" to item.name from the object/array of images
+    // console.log(item)//item is the array of objects
+    const card = document.createElement('div')//generate the HTML for the cards
+    const front = document.createElement('div')
+    const back = document.createElement('div')
+    card.classList = "card"  //decided to use classList instead of setAttribute for cleaner looking code. W3 schools reference
+    front.classList = "front"
+    back.classList = "back"
+    
+     //attach the info to the cards(imgSrc and name) shown in HTML
+     front.src = item.imgSrc
+     card.setAttribute("name", item.name)
+    
+     //attach the cards to the section/grid
+    grid.appendChild(card)
+    card.appendChild(front)
+    card.appendChild(back)
+    // console.log(card)
+    // console.log(front)
+    // console.log(back)
+    })
+} 
+createCards()
 //create players
 
 
