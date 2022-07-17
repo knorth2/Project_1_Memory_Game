@@ -14,7 +14,9 @@
 //enable start button once clicked.
 //link new board once shuffled to start game.
 
-//Card Array with linked images
+
+
+//Card Array with linked images - array of objects for easier grabbing
 const getImages = () => [
     {imgSrc: "./images/apple.png", name: "apple"},
     {imgSrc: "./images/banana.png", name: "banana"},
@@ -36,15 +38,16 @@ const getImages = () => [
 ];
 
 //global variables
-
 let playerName = null
 let player1Score = 1
 let player2Score = 1
 
+//Grab from HTML via DOM
 const startButton = document.querySelector('.start')
-
-//create grid class
+const playerOne = document.querySelector('.playerOne')
+const playerTwo = document.querySelector('.playerTwo')
 const game = document.querySelector('#game')
+//create grid class
 const grid = document.createElement('section')
 grid.setAttribute('class', 'grid')
 game.appendChild(grid)
