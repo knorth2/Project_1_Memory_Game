@@ -67,9 +67,9 @@ const createCards = () =>{
     //need to run through loop here to go through all 16 cards??
 cardData.forEach((item)=>{ //add index to setAttribute "name" to item.name from the object/array of images
     // console.log(item)//item is the array of objects
-    const card = document.createElement('div')//generate the HTML for the cards
-    const front = document.createElement('div')
-    const back = document.createElement('div')
+    const card = document.createElement("div")//generate the HTML for the cards
+    const front = document.createElement("img")
+    const back = document.createElement("div")
     card.classList = "card"  //decided to use classList instead of setAttribute for cleaner looking code. W3 schools reference
     front.classList = "front"
     back.classList = "back"
@@ -85,51 +85,20 @@ cardData.forEach((item)=>{ //add index to setAttribute "name" to item.name from 
     // console.log(card)
     // console.log(front)
     // console.log(back)
+
+//Create event listener and set them to card. Use toggle method to target CSS. **referenced Jeff Cuartas blog on how to create flip effect sent to me by Gore and also W3schools using HTML DOM targeting variable in CSS for animation.
+
+  card.addEventListener('click', event => {
+    card.classList.toggle('toggleCard') 
     })
-} 
+  })
+}
 createCards()
-//create players
 
 
-
-//Create event listener for cards(grid) and set them to a variable so I can target them easier for game play. Make conditionals so when clicked it runs match and resetCards Functions.
   
-  grid.addEventListener('click', event => {
-  
-    const clicked = event.target;
-  
-    if (
-      clicked.nodeName === 'section' ||
-      clicked === previousCard ||
-      clicked.parentNode.classList.contains('selected') ||
-      clicked.parentNode.classList.contains('match')
-    ) {
-      return;
-    }
-  
-    if (count < 2) {
-      count++;
-      if (count === 1) {
-        firstGuess = clicked.parentNode.dataset.img;
-        console.log(firstGuess);
-        clicked.parentNode.classList.add('selected');
-      } else {
-        secondGuess = clicked.parentNode.dataset.img;
-        console.log(secondGuess);
-        clicked.parentNode.classList.add('selected');
-      }
-  
-      if (firstGuess && secondGuess) {
-        if (firstGuess === secondGuess) {
-          setTimeout(match, 1000);
-        }
-        setTimeout(resetCards, 1000);
-      }
-      previousCard = clicked;
-    }
-  
-  });
-
+ //create players 
+    
 
 
 
