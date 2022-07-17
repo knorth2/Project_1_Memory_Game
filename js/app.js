@@ -1,15 +1,13 @@
 //PseudoCode
 
-//Make array of cards
-//Declare variables:  memory values array = [], cards flipped, players Turn, player1 score, player2 score, etc
+//Make array of images and link them to front of card
+//Declare variables: current players Turn, player1 score, player2 score, etc
 //shuffle cards function using loop to iterate through array of cards. Use math.floor(math.random())
-//Set up board using for loop to iterate through card array and push in to string? output set to gameboard div? connect to start game somehow.
-
-//Game play: several functions with conditionals. create array to hold value of 2 cards that are flipped. If they match, the appropriate player's score is increased and it's the next player's turn. If they don't match, the next player goes. Players turn variable is increased next player is up, use setTimeout method.
+//Set up board using for loop to iterate through card array. output set to gameboard div? connect to start game somehow.
+//Game play: several functions with conditionals. create array to hold value of 2 cards that are flipped?? If they match, the appropriate player's score is increased and it's the next player's turn. If they don't match, the next player goes. Players turn variable is increased next player is up, use setTimeout method.
 //Make conditionals to see if the whole board is cleared/matched, if so declare the winner. 
-//If not a match, Make function to flip card back over targeting 2 card array? 
-//How to determine players turn it is???  If playersTurn % 2 === 0
-//reset button add eventListener function
+//How to determine players turn it is???  make currentPlayer function
+//reset game function 
 //make start/play button function with event listener that asks for names for both players, add conditionals etc.
 //enable start button once clicked.
 //link new board once shuffled to start game.
@@ -93,6 +91,14 @@ cardData.forEach((item)=>{ //add index to setAttribute "name" to item.name from 
     })
   })
 }
+
+//check cards for match
+const checkCards = event =>{
+    const clicked = event.target
+    console.log(clicked) //nothing happening...
+}
+
+
 createCards()
 
 
