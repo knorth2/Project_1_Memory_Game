@@ -88,14 +88,20 @@ cardData.forEach((item)=>{ //add index to setAttribute "name" to item.name from 
 
   card.addEventListener('click', event => {
     card.classList.toggle('toggleCard') 
+    checkCards(event) //call checkCards function when card is clicked, which will add attribute to specific card.
     })
   })
 }
 
 //check cards for match
 const checkCards = event =>{
-    const clicked = event.target
-    console.log(clicked) //nothing happening...
+    const clicked = event.target //target event property refers to the element whose event listener triggered the event. so pass checkCards function in the eventlistener above.
+    // console.log(clicked) //nothing happening...
+    clicked.classList.add("flipped")//add a class of flipped to each card so we can CHECK for a match, addign it to a variable
+    const flippedCards = document.querySelectorAll(".flipped")
+
+    //game logic 
+    
 }
 
 
