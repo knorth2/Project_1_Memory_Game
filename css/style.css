@@ -1,55 +1,46 @@
 body {
   
   background: aquamarine;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 h1{
 text-align: center;
 font-size: 50px;
 }
 
-.grid {
-  max-width: 960px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+section {
+  display: grid;
+ grid-template-columns: repeat(4,130px);
+ grid-template-rows: repeat(4,130px);
+ grid-gap: 30px;
+ perspective: 800px;/* you have to put this on the parent element if you are doing preserve-3d on the child(card)*/
 } 
 
 .card {
   position: relative;
-  transition: all .4s linear;
   transform-style: preserve-3d;
-  margin: 5px;
+  transition: all 2s ease;
 }
 
-.card,
-.back,
-.front {
-  height: 150px;
-  width: 150px;
-}
-
-.back,
-.front {
+.front,
+.back {
+  height: 100%;
+  width: 100%;
   position: absolute;
-  backface-visibility: hidden;
-}
-
-.front { 
-  background: black;
-  background-size: cover;
-  
+  pointer-events: none; /*you have to add this so when clicked the front/back doesn't return, we just want card returned*/
 }
 
 .back {
-  transform: rotateY(180deg);
   background: white;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
+  backface-visibility: hidden;
 }
 
-.selected {
+.toggleCard {
   transform: rotateY(180deg);
 }
 
+/*referenced Jeff Cuartas blog on how to create flip effect sent to me by Gore and also W3 schools and stack Overflow, especiall with how to use the toggleCard*/

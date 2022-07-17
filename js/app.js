@@ -59,10 +59,10 @@ const randomize = () => {
 // randomize();
 
 
-//create cards and call randomize function to get shuffled version of the cards
+//create cards put in function
 
 const createCards = () =>{
-    const cardData = randomize();
+    const cardData = randomize(); //call randomize function to get shuffled version of the cards
     // console.log(cardData)
     //need to run through loop here to go through all 16 cards??
 cardData.forEach((item)=>{ //add index to setAttribute "name" to item.name from the object/array of images
@@ -91,25 +91,6 @@ createCards()
 //create players
 
 
-
-//created matched function and set a class of 'match' on the card variable. To target each card run through a loop to setAttribute via DOM.
-function match(){
-    const selected = document.querySelectorAll('.selected');
-    selected.forEach(card => {
-      card.setAttribute('class', 'match');
-    });
-  };
-  
-
-
-//create reset function to flip unmatched cards back over, removeAttribute method?? 
-
-function resetCards(){
-    const selected = document.querySelectorAll('.selected');
-    selected.forEach(card => {
-      card.removeAttribute('.selected');
-    });
-  };
 
 //Create event listener for cards(grid) and set them to a variable so I can target them easier for game play. Make conditionals so when clicked it runs match and resetCards Functions.
   
