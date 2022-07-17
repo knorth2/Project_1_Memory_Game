@@ -112,8 +112,8 @@ const checkCards = event =>{
         }else{
             console.log('not a match')
             flippedCards.forEach((card) =>{
-                card.classList.remove("flipped")//once flipped and don't match, the 'flipped' class needs to be removed
-                card.classList.remove("toggleCard")//to flip unmatched card back over, remove the animation on the toggleCard. 
+                card.classList.remove("flipped")//once flipped and don't match, the 'flipped' class needs to be removed -referenced all this on stackOverflow
+                setTimeout(() => card.classList.remove("toggleCard"), 2000)//to flip unmatched card back over, remove the animation on the toggleCard. 
             })
         }
     }
