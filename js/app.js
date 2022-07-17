@@ -105,7 +105,16 @@ const checkCards = event =>{
     //game logic 
     if(flippedCards.length === 2){ // two cards flipped (it adds a class 'flipped), check by attribute name and since it is an array of objects use index number
         if(flippedCards[0].getAttribute("name") === flippedCards[1].getAttribute("name")){
-
+            console.log('match')
+            flippedCards.forEach((card) =>{
+                card.classList.remove("flipped")//once matched, remove 'flipped' class so they remain faceup
+            })
+        }else{
+            console.log('not a match')
+            flippedCards.forEach((card) =>{
+                card.classList.remove("flipped")//once flipped and don't match, the 'flipped' class needs to be removed
+                card.classList.remove("toggleCard")//to flip unmatched card back over, remove the animation on the toggleCard. 
+            })
         }
     }
 }
