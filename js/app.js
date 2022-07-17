@@ -14,14 +14,30 @@
 //enable start button once clicked.
 //link new board once shuffled to start game.
 
-//Card Array
-const cardsArray = ['🍕', '🥐', '🍷', '🍯', '🍦', '🦪', '🥟', '🌯', '🥓', '🍄', '🥑', '🫒'];
+//Card Array with linked images
+const getImages = () => [
+    {imgSrc: "./images/apple.png", name: "apple"},
+    {imgSrc: "./images/banana.png", name: "banana"},
+    {imgSrc: "./images/coffee.png", name: "coffee"},
+    {imgSrc: "./images/donut.png", name: "donut"},
+    {imgSrc: "./images/grapes.png", name: "grapes"},
+    {imgSrc: "./images/orange.png", name: "orange"},
+    {imgSrc: "./images/pear.png", name: "pear"},
+    {imgSrc: "./images/strawberry.png", name: "strawberry"},
+    {imgSrc: "./images/apple.png", name: "apple"},
+    {imgSrc: "./images/banana.png", name: "banana"},
+    {imgSrc: "./images/coffee.png", name: "coffee"},
+    {imgSrc: "./images/donut.png", name: "donut"},
+    {imgSrc: "./images/grapes.png", name: "grapes"},
+    {imgSrc: "./images/orange.png", name: "orange"},
+    {imgSrc: "./images/pear.png", name: "pear"},
+    {imgSrc: "./images/strawberry.png", name: "strawberry"},
+    
+];
 
 //global variables
-let firstGuess = ''
-let secondGuess = ''
-let count = 0
-let previousCard = null
+
+let playerName = null
 let player1Score = 1
 let player2Score = 1
 
@@ -82,11 +98,6 @@ function match(){
 //create reset function to flip unmatched cards back over, removeAttribute method?? 
 
 function resetCards(){
-    firstGuess = '';
-    secondGuess = '';
-    count = 0;
-    previousCard = null;
-  
     const selected = document.querySelectorAll('.selected');
     selected.forEach(card => {
       card.removeAttribute('.selected');
@@ -130,18 +141,6 @@ function resetCards(){
     }
   
   });
-
-// startGame(){
-//     match()
-//     resetCards()
-// };
-
-//   startButton.addEventListener('click', (event) =>{
-//     this.name = prompt('Ready to concentrate?')
-//     alert(`Hello, ${this.name}!`)
-//     event.target.disabled = true; //turn off start button
-//     startGame()
-// })
 
 
 
