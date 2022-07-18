@@ -44,8 +44,10 @@ let player2Score = 1
 //Grab from HTML via DOM
 const startButton = document.querySelector('.start')
 const grid = document.querySelector('section')
-const playerOne = document.querySelector('.playerOne')
-const playerTwo = document.querySelector('.playerTwo')
+let playerOneName = document.querySelector('.playerOneName')
+let playerTwoName = document.querySelector('.playerTwoName')
+let playerOneScore = document.querySelector('.playerOneScore')
+let playerTwoScore = document.querySelector('.playerTwoScore')
 
 
 
@@ -107,28 +109,34 @@ const checkCards = event =>{
         if(flippedCards[0].getAttribute("name") === flippedCards[1].getAttribute("name")){
             console.log('match')
             flippedCards.forEach((card) =>{
-                card.classList.remove("flipped")//once matched, remove 'flipped' class so they remain faceup
-            })
+                card.classList.remove("flipped")//once matched, remove 'flipped' class so they remain faceup 
+            if(playerTurn === 1){
+                playerOneScore.innerText ++
+            }else{
+                playerTwoScore.innerText ++
+            }
+        }) 
         }else{
             console.log('not a match')
             flippedCards.forEach((card) =>{
                 card.classList.remove("flipped")//once flipped and don't match, the 'flipped' class needs to be removed -referenced all this on stackOverflow
                 setTimeout(() => card.classList.remove("toggleCard"), 2000)//to flip unmatched card back over, remove the animation on the toggleCard. 
-            })
+            }) //add a setTimeout so it doesn't immediately turn over.
         }
     }
 }
 
  //create players 
 const currentPlayer = () =>{
-    if(playerTurn %2 === 0){
-        playerName = 1
+    if(playerTurn %2 == 0){
+        playerOneName = 1
     }else{
-        playerName = 2
-        // console.log(playerName)
+        playerTwoName = 2
+    //    console.log(playerTurn) 
     }
 }
 
+//restart
 createCards()
 
 
