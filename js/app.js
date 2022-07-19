@@ -36,10 +36,8 @@ const getImages = () => [
 ];
 
 //global variables
-let playerName = null
-let playerTurn = 0
-let player1Score = 1
-let player2Score = 1
+let playerName = ""
+let playerTurn = true
 
 //Grab from HTML via DOM
 const startButton = document.querySelector('.start')
@@ -107,36 +105,44 @@ const checkCards = event =>{
     //game logic 
     if(flippedCards.length === 2){ // two cards flipped (it adds a class 'flipped), check by attribute name and since it is an array of objects use index number
         if(flippedCards[0].getAttribute("name") === flippedCards[1].getAttribute("name")){
-            console.log('match')
+            // console.log('match')
             flippedCards.forEach((card) =>{
                 card.classList.remove("flipped")//once matched, remove 'flipped' class so they remain faceup 
-            if(playerTurn === 1){
+            if(playerTurn){
                 playerOneScore.innerText ++
             }else{
                 playerTwoScore.innerText ++
             }
         }) 
         }else{
-            console.log('not a match')
+            // console.log('not a match')
             flippedCards.forEach((card) =>{
                 card.classList.remove("flipped")//once flipped and don't match, the 'flipped' class needs to be removed -referenced all this on stackOverflow
-                setTimeout(() => card.classList.remove("toggleCard"), 2000)//to flip unmatched card back over, remove the animation on the toggleCard. 
-            }) //add a setTimeout so it doesn't immediately turn over.
-        }
+                setTimeout(() => card.classList.remove("toggleCard"), 2000)//to flip unmatched card back over, remove the animation on the toggleCard. Add a setTimeout so it doesn't immediately turn over.
+            
+            if(playerTurn){
+                playerTurn = false
+            }
+                else if(!playerTurn){
+                playerTurn = true
+                }
+            })                                                           
+        } 
     }
 }
 
  //create players 
-const currentPlayer = () =>{
-    if(playerTurn %2 == 0){
-        playerOneName = 1
-    }else{
-        playerTwoName = 2
-    //    console.log(playerTurn) 
-    }
-}
+// const currentPlayer = () =>{
+//     if(playerTurn %2 === 0){
+//         playerOneName = 1
+//     }else{
+//         playerTwoName = 2
+//     //    console.log(playerTurn) 
+//     }
+// }
 
 //restart
+
 createCards()
 
 
