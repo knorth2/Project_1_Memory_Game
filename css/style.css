@@ -12,6 +12,10 @@ font-size: 50px;
 font-size: 25px;
 }
 
+.reset{
+  font-size: 25px;
+}
+
 #playerStats{
   display: flex;
   justify-content: space-around;

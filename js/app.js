@@ -49,6 +49,7 @@ let playerTwoName = document.querySelector('.playerTwoName')
 let playerOneScore = document.querySelector('.playerOneScore')
 let playerTwoScore = document.querySelector('.playerTwoScore')
 let playerDiv1 = document.querySelector('#playerOneDiv')
+let resetButton = document.querySelector('.reset')
 
 
 //radomize the cards-updated by putting in a function so I can use it easier, also decided not to concat array, might change mind later for dryer code.
@@ -121,35 +122,31 @@ const checkCards = event =>{
         }) 
         }else{
             console.log('not a match')
+            playerTurn = !playerTurn//If NOT a match switch players-use bang operater to return the opposite boolean value.
             flippedCards.forEach((card) =>{
                 card.classList.remove("flipped")//once flipped and don't match, the 'flipped' class needs to be removed -referenced on stackOverflow.
-                setTimeout(() => card.classList.remove("toggleCard"), 2000)//to flip unmatched card back over, remove the animation on the toggleCard. Add a setTimeout so it doesn't immediately turn over.
-                if(playerTurn){  //If NOT a match switch players-use bang operater to return the opposite boolean value.
-                    !playerTurn  
-                    // console.log(playerTurn)
-                } else if(!playerTurn){
-                    playerTurn
-                }
-                   
+                setTimeout(() => card.classList.remove("toggleCard"), 2000)//to flip unmatched card back over, remove the animation on the toggleCard. Add a setTimeout so it doesn't immediately turn over.     
             })                                                           
         } 
     }
 }
 
-
-
+const restartGame = () =>{
+    randomize()
+    createCards()
+}
 //start button function
 startButton.addEventListener('click', (event) =>{
 alert("Hello players! Time to test your mental strength with the classic memory game, Concentration. Player One will start the game. Click on a card and try to find its match. If you get a match, keep guessing. If it isn't a match, player 2 will go. The player at the end with the most matches is declared the winner! Click the restart button at the bottom of the page to play again. Have fun and good luck!")
 playerOneName.innerText = prompt('What is your name?', 'Enter Name')
 playerTwoName.innerText = prompt('What is your name?', 'Enter Name')
   event.target.disabled = true //turn off start button  
-
+ 
 })
-
+createCards()
 //restart
 
-createCards()
+
 
 
   
