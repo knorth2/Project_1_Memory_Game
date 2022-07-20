@@ -36,17 +36,19 @@ const getImages = () => [
 ];
 
 //global variables
-let playerName = ""
-let playerTurn = true
+
+let playerTurn = 0
+let playerName = null
+
 
 //Grab from HTML via DOM
-const startButton = document.querySelector('.start')
-const grid = document.querySelector('section')
+let startButton = document.querySelector('.start')
+let grid = document.querySelector('section')
 let playerOneName = document.querySelector('.playerOneName')
 let playerTwoName = document.querySelector('.playerTwoName')
 let playerOneScore = document.querySelector('.playerOneScore')
 let playerTwoScore = document.querySelector('.playerTwoScore')
-
+let playerDiv1 = document.querySelector('#playerOneDiv')
 
 
 //radomize the cards-updated by putting in a function so I can use it easier, also decided not to concat array, might change mind later for dryer code.
@@ -105,27 +107,27 @@ const checkCards = event =>{
     //game logic 
     if(flippedCards.length === 2){ // two cards flipped (it adds a class 'flipped), check by attribute name and since it is an array of objects use index number
         if(flippedCards[0].getAttribute("name") === flippedCards[1].getAttribute("name")){
-            // console.log('match')
+            console.log('match')
             flippedCards.forEach((card) =>{
-                card.classList.remove("flipped")//once matched, remove 'flipped' class so they remain faceup 
-            if(playerTurn){
+                card.classList.remove("flipped")//once matched, remove 'flipped' class so they remain faceup    
+                playerTurn ++ 
+                // currentPlayer()
+            if(playerName === 1){
                 playerOneScore.innerText ++
+                
             }else{
-                playerTwoScore.innerText ++
-            }
+                playerTwoScore.innerText ++  
+            }   
         }) 
         }else{
-            // console.log('not a match')
+            console.log('not a match')
             flippedCards.forEach((card) =>{
                 card.classList.remove("flipped")//once flipped and don't match, the 'flipped' class needs to be removed -referenced all this on stackOverflow
                 setTimeout(() => card.classList.remove("toggleCard"), 2000)//to flip unmatched card back over, remove the animation on the toggleCard. Add a setTimeout so it doesn't immediately turn over.
-            
-            if(playerTurn){
-                playerTurn = false
-            }
-                else if(!playerTurn){
-                playerTurn = true
-                }
+                
+                playerTurn ++ // switch players
+                console.log(playerTurn)
+                // console.log(currentPlayer())
             })                                                           
         } 
     }
@@ -133,13 +135,21 @@ const checkCards = event =>{
 
  //create players 
 // const currentPlayer = () =>{
-//     if(playerTurn %2 === 0){
-//         playerOneName = 1
-//     }else{
-//         playerTwoName = 2
-//     //    console.log(playerTurn) 
+//     if(playerTurn === 0){
+         playerName = 1
+//     }    else{
+            playerName = 2
+    
 //     }
 // }
+
+
+//start button function
+startButton.addEventListener('click', (event) =>{
+    // playerName1 = playerOneName.innerText
+    // playerName2 = playerTwoName.innerText
+
+})
 
 //restart
 
