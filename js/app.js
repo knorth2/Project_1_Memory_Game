@@ -37,7 +37,7 @@ const getImages = () => [
 
 //global variables
 
-let playerTurn = 0
+let playerTurn = true
 let playerName = null
 
 
@@ -79,6 +79,7 @@ cardData.forEach((item)=>{ //add index to setAttribute "name" to item.name from 
      //attach the info to the cards(imgSrc and name) shown in HTML
      front.src = item.imgSrc
      card.setAttribute("name", item.name)
+     
     
      //attach the cards to the section/grid
     grid.appendChild(card)
@@ -87,7 +88,7 @@ cardData.forEach((item)=>{ //add index to setAttribute "name" to item.name from 
     // console.log(card)
     // console.log(front)
     // console.log(back)
-
+    // document.querySelectorAll('.back').src = "./images/mind_games.jpg"
 //Create event listener and set them to card. Use toggle method to target CSS. **referenced Jeff Cuartas blog on how to create flip effect sent to me by Gore and also W3schools using HTML DOM targeting variable in CSS for animation.
 
   card.addEventListener('click', event => {
@@ -110,44 +111,39 @@ const checkCards = event =>{
             console.log('match')
             flippedCards.forEach((card) =>{
                 card.classList.remove("flipped")//once matched, remove 'flipped' class so they remain faceup    
-                playerTurn ++ 
-                // currentPlayer()
-            if(playerName === 1){
+               
+            if(playerTurn){ //starts with player 1
                 playerOneScore.innerText ++
-                
+               
             }else{
                 playerTwoScore.innerText ++  
-            }   
+            }    
         }) 
         }else{
             console.log('not a match')
             flippedCards.forEach((card) =>{
-                card.classList.remove("flipped")//once flipped and don't match, the 'flipped' class needs to be removed -referenced all this on stackOverflow
+                card.classList.remove("flipped")//once flipped and don't match, the 'flipped' class needs to be removed -referenced on stackOverflow.
                 setTimeout(() => card.classList.remove("toggleCard"), 2000)//to flip unmatched card back over, remove the animation on the toggleCard. Add a setTimeout so it doesn't immediately turn over.
-                
-                playerTurn ++ // switch players
-                console.log(playerTurn)
-                // console.log(currentPlayer())
+                if(playerTurn){  //If NOT a match switch players-use bang operater to return the opposite boolean value.
+                    !playerTurn  
+                    // console.log(playerTurn)
+                } else if(!playerTurn){
+                    playerTurn
+                }
+                   
             })                                                           
         } 
     }
 }
 
- //create players 
-// const currentPlayer = () =>{
-//     if(playerTurn === 0){
-         playerName = 1
-//     }    else{
-            playerName = 2
-    
-//     }
-// }
 
 
 //start button function
 startButton.addEventListener('click', (event) =>{
-    // playerName1 = playerOneName.innerText
-    // playerName2 = playerTwoName.innerText
+alert("Hello players! Time to test your mental strength with the classic memory game, Concentration. Player One will start the game. Click on a card and try to find its match. If you get a match, keep guessing. If it isn't a match, player 2 will go. The player at the end with the most matches is declared the winner! Click the restart button at the bottom of the page to play again. Have fun and good luck!")
+playerOneName.innerText = prompt('What is your name?', 'Enter Name')
+playerTwoName.innerText = prompt('What is your name?', 'Enter Name')
+  event.target.disabled = true //turn off start button  
 
 })
 
