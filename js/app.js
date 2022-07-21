@@ -31,7 +31,7 @@ const getImages = () => [
   { imgSrc: "./images/pear.png", name: "pear" },
   { imgSrc: "./images/strawberry.png", name: "strawberry" },
 ];
-console.log(getImages());
+console.log('getImages function', getImages());
 
 //global variables
 let playerTurn = true;
@@ -107,6 +107,7 @@ const checkCards = (event) => {
     ) {
       console.log("match");
       flippedCards.forEach((card) => {
+        // console.log('card', card)
         card.classList.remove("flipped"); //once matched, remove 'flipped' class so they remain faceup
 
         if (playerTurn) {
@@ -147,6 +148,7 @@ const checkCards = (event) => {
       playerTurn = !playerTurn; //If NOT a match switch players-use bang operater to return the opposite boolean value.
       flippedCards.forEach((card) => {
         card.classList.remove("flipped"); //once flipped and don't match, the 'flipped' class needs to be removed -referenced on stackOverflow.
+        card.classList.remove("match")
         setTimeout(() => card.classList.remove("toggleCard"), 2000); //to flip unmatched card back over, remove the animation on the toggleCard. Add a setTimeout so it doesn't immediately turn over.
       });
     }
@@ -166,9 +168,39 @@ startButton.addEventListener("click", (event) => {
   playerTwoName.innerText = prompt("What is your name?", "Enter Name");
   event.target.disabled = true; //turn off start button
 });
+
+
+// const checkWinner = (event) =>{
+//   const clicked = event.target;
+//   clicked.classList.add("match"); // added class of match so i can target the length of matched array to see who won the game compared to images array.
+//   const matched = document.querySelectorAll(".match");
+//   // console.log(matched) 
+
+//   console.log(matched.length, 'match length', getImages().length, 
+//   'image length')
+//   if (matched.length == getImages().length) {
+//     //these both have an array of 16 
+//     console.log('inside the conditional')
+//     console.log(playerOneScore.innerText, 'player one', playerTwoScore.innerText, 'player two')
+//     if (
+//       matched.length == 16 &&
+//       playerOneScore.innerText > playerTwoScore.innerText
+//     ) {
+//       console.log(playerOneScore.innerText);
+//       alert(`Congratulations Player ${playerOneName.innerText}! You won 🥳`);
+//     } 
+//      if ( 
+//       matched.length == 16 &&
+//       playerTwoScore.innerText > playerOneScore.innerText
+//     ) {console.log('player2 score')
+//       alert(`Congratulations ${playerTwoName.innerText}! You won 🥳`);
+//     }
+//     if (playerOneScore.innerText === playerTwoScore.innerText) {
+//       alert("It's a Draw! 🤠");
+//     }
+//   }
+// }
+
 createCards();
-//restart
-
-
-      
+//restart 
   
