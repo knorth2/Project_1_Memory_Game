@@ -134,13 +134,14 @@ const checkCards = (event) => {
          if ( 
           matched.length == 16 &&
           playerTwoScore.innerText > playerOneScore.innerText
-        ) {console.log('inside else if')
+        ) {console.log('player2 score')
           alert(`Congratulations ${playerTwoName.innerText}! You won 🥳`);
         }
         if (playerOneScore.innerText === playerTwoScore.innerText) {
           alert("It's a Draw! 🤠");
         }
       }
+    
     } else {
       console.log("not a match");
       playerTurn = !playerTurn; //If NOT a match switch players-use bang operater to return the opposite boolean value.
@@ -168,16 +169,6 @@ startButton.addEventListener("click", (event) => {
 createCards();
 //restart
 
-// const scoreCheck = () =>{
-// if( === getImages.length){
-//     if(playerOneScore > playerTwoScore){
-//         alert("Congratulations! You won 🥳")
-//       }else if(playerTwoScore >playerOneScore){
-//         alert("Congratulations! You won 🥳")
-//       }     if(playerOneScore === playerTwoScore){
-//             alert("It's a Draw! 🤠")
-//         }
-//     }
 
-// }
-// scoreCheck()
+      
+  
