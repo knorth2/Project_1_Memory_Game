@@ -95,7 +95,7 @@ const checkCards = (event) => {
   const clicked = event.target; //target event property refers to the element whose event listener triggered the event. so pass checkCards function in the eventlistener above.
   clicked.classList.add("flipped"); //add a class of flipped to each card so we can CHECK for a match, addign it to a variable
   const flippedCards = document.querySelectorAll(".flipped");
-  clicked.classList.add("match");
+  clicked.classList.add("match"); // added class of match so i can target the length of matched array to see who won the game compared to images array.
   const matched = document.querySelectorAll(".match");
   // console.log(matched)
 
@@ -103,8 +103,7 @@ const checkCards = (event) => {
   if (flippedCards.length === 2) {
     // two cards flipped (it adds a class 'flipped), check by attribute name and since it is an array of objects use index number
     if (
-      flippedCards[0].getAttribute("name") ===
-      flippedCards[1].getAttribute("name")
+      flippedCards[0].getAttribute("name") === flippedCards[1].getAttribute("name")
     ) {
       console.log("match");
       flippedCards.forEach((card) => {
@@ -116,19 +115,12 @@ const checkCards = (event) => {
         } else {
           playerTwoScore.innerText++;
         }
-        //         if( matched === getImages.length){
-        //             if(playerOneScore.innerText > playerTwoScore.innerText){
-        //              alert("Congratulations! You won 🥳")
-        //             }else if(playerTwoScore.innerText >playerOneScore.innerText){
-        //              alert("Congratulations! You won 🥳")
-        //         }          if(playerOneScore.innerText === playerTwoScore.innerText){
-        //                    alert("It's a Draw! 🤠")
-        //     }
-        // }
+       
       });
+    
       console.log(matched.length, 'match length', getImages().length, 
       'image length')
-      if (matched.length === getImages().length) {
+      if (matched.length == getImages().length) {
         //these both have an array of 16 
         console.log('inside the conditional')
         console.log(playerOneScore.innerText, 'player one', playerTwoScore.innerText, 'player two')
@@ -137,13 +129,13 @@ const checkCards = (event) => {
           playerOneScore.innerText > playerTwoScore.innerText
         ) {
           console.log(playerOneScore.innerText);
-          alert("Congratulations Player 1! You won 🥳");
+          alert(`Congratulations Player ${playerOneName.innerText}! You won 🥳`);
         } 
          if ( 
           matched.length == 16 &&
           playerTwoScore.innerText > playerOneScore.innerText
         ) {console.log('inside else if')
-          alert("Congratulations! You won 🥳");
+          alert(`Congratulations ${playerTwoName.innerText}! You won 🥳`);
         }
         if (playerOneScore.innerText === playerTwoScore.innerText) {
           alert("It's a Draw! 🤠");
