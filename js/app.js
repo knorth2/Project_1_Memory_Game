@@ -159,10 +159,7 @@ const checkCards = (event) => {
   }
 };
 
-//reset button-why wont it work if i just add the createCards() function in here??
-
-resetButton.addEventListener('click', (event) => {
-  event.target//.disabled = true;
+const restartGame = () =>{
   let cardData = randomize()//get randomized version of cards each time reset button is clicked.
   let front = document.querySelectorAll(".front")
   let cards =  document.querySelectorAll(".card")
@@ -175,22 +172,28 @@ resetButton.addEventListener('click', (event) => {
       cards[index].setAttribute("name", item.name)//randomize so each game is different.
       grid.style.pointerEvents = "all"
     }, 1000)
-    
   })
+}
+
+//reset button-why wont it work if i just add the createCards() function in here??
+
+resetButton.addEventListener('click', (event) => {
+  event.target//.disabled = true;
+
    playerOneScore.innerText = 0//reset scores to 0
    playerTwoScore.innerText = 0
    playerOneName.innerText = prompt("What is your name?", "Enter Name");//option for different player
    playerTwoName.innerText = prompt("What is your name?", "Enter Name");
   
   // startButton.disabled = false
- 
+ restartGame()
   })
 
 const stats = document.querySelector("#playerStats") //clear stats for start of game
 stats.style.display = "none"
 grid.style.background = "url('/images/think.png') no-repeat left" 
 
-//start button 
+//start button -event listener
 startButton.addEventListener("click", (event) => { 
   alert(
     "Hello players! Time to test your mental strength with the classic memory game, Concentration. Player One will start the game. Click on a card and try to find its match. If you get a match, keep guessing. If it isn't a match, player 2 will go. The player at the end with the most matches is declared the winner! Click the restart button to play again. Have fun and good luck!"
