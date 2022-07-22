@@ -10,21 +10,55 @@ body {
 
 h1{
 text-align: center;
-font-size: 50px;
+font-size: 70px;
+text-decoration: underline;
 }
 
 .start{
 font-size: 25px;
+margin-left: 20px;
+margin-right: 10px;
+margin-bottom: 50px;
+display: inline-block;
+padding: 15px 25px;
+cursor: pointer;
+text-align: center;
+color: aquamarine;
+background-color: black;
+border-radius: 15px;
+box-shadow: 0 9px #999;
 }
+.start:hover {background-color: white}
 
+.start:active {
+  background-color: white;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 .reset{
-  font-size: 25px;
+font-size: 25px;
+margin-bottom: 50px;
+display: inline-block;
+padding: 15px 25px;
+cursor: pointer;
+text-align: center;
+color: aquamarine;
+background-color: black;
+border-radius: 15px;
+box-shadow: 0 9px #999;
+}
+.reset:hover {background-color: white}
+
+.reset:active {
+  background-color: white;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 #playerStats{
   display: flex;
   justify-content: space-around;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   font-size: 30px;
 }
 
@@ -35,6 +69,7 @@ section {
  grid-gap: 20px;
  perspective: 800px;/*you have to put this on the parent element if you are doing preserve-3d on the child(card) */
  justify-content: center;
+ margin-bottom: 40px;
 } 
 
 .card {
@@ -58,6 +93,9 @@ section {
 
 .toggleCard {
   transform: rotateY(180deg);
+}
+::-webkit-scrollbar {
+  display: none;
 }
 
 /*referenced Jeff Cuartas blog on how to create flip effect sent to me by Gore and also W3 schools and stack Overflow, especially with how to use the toggleCard*/

@@ -172,11 +172,12 @@ const stats = document.querySelector("#playerStats") //clear stats for start of 
    playerTwoName.innerText = 'Player 2'
   
   startButton.disabled = false
+ 
   })
 
 const stats = document.querySelector("#playerStats") //clear stats for start of game
 stats.style.display = "none"
-grid.style.background = "url('/images/think.png')" 
+grid.style.background = "url('/images/think.png') no-repeat left" 
 
 //start button 
 startButton.addEventListener("click", (event) => {
@@ -186,8 +187,7 @@ startButton.addEventListener("click", (event) => {
 );
   playerOneName.innerText = prompt("What is your name?", "Enter Name");
   playerTwoName.innerText = prompt("What is your name?", "Enter Name");
-  event.target.disabled = true; //turn off start button
-
+  event.target.disabled = true //turn off start button
   playerOneName.style.textShadow = "3px 3px white"//highlight playerOneName to go first
   const stats = document.querySelector("#playerStats")//add stats for game play
   stats.style.display = "flex"
