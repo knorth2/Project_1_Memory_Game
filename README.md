@@ -1,17 +1,18 @@
 # Project_1_Memory_Game :thinking:
  Time to test your mental strength with the classic memory game, Concentration. This is a two-person memory game that I created and styled using HTML, CSS and Vanilla Javascript for my first project in my Software Engineering Immersive course I am taking through General Assembly. 
 
+## Project Description
+* Player One will start the game. Click on a card and try to find its match. If you get a match, keep guessing. If it isn't a match, player 2 will go. The player at the end with the most matches is declared the winner! Click the restart button to play again. 
 
 * Currently the game can only be played on a desktop browser so there is no installation required. 
 * HTML, CSS and Javascript
-*  :upside_down_face: Unsolved Problems: A few unsolved problems I found in my gameWin()logic was it randomly wouldn't alert the correct player won.
+* Unsolved Problems:upside_down_face::  I found that in my game "Win" logic it randomly wouldn't alert the correct player won.
 * Forthcoming features:  I would like to add sound effects to the cards when flipped and matched vs flipped and don't match. I would also like to make my game playable on other devices.
 
 
-Below is my project proposal and wireframe-I decided not to go with the presidential theme due to finding photos i liked for free. I also cut the cards in half using only 12 instead of 24 cards.  I hope you enjoy it! 
+Below is my project proposal and wireframe-I decided not to go with the presidential theme due to photo selection. I also cut the cards in half using only 12 instead of 24 cards.  I hope you enjoy it! 
 
-### Project Choice
-* Memory Game
+
 
 ## Project Desciption 
 * Presidential Memory Game is a matching game using Presidents faces. When you click a square it will flip over. If the second square you click matches it will remain face up and turn the same color indicating you matched its partner. Continue to click around and find the matching mates. When you have matched all the squares the game will alert that you have won and ask if you want to play again.
