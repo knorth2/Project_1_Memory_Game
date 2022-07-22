@@ -1,14 +1,19 @@
+
+
 body {
   
   background: aquamarine;
+  background-size: cover;  
+  background-attachment: fixed; 
+  
 }
+
 h1{
 text-align: center;
 font-size: 50px;
 }
 
 .start{
-
 font-size: 25px;
 }
 

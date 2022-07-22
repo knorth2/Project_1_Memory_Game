@@ -38,13 +38,13 @@ let playerTurn = true;
 
 //Grab from HTML via DOM
 let startButton = document.querySelector(".start");
+let resetButton = document.querySelector('.reset');
 let grid = document.querySelector("section");
 let playerOneName = document.querySelector(".playerOneName");
 let playerTwoName = document.querySelector(".playerTwoName");
 let playerOneScore = document.querySelector(".playerOneScore");
 let playerTwoScore = document.querySelector(".playerTwoScore");
-let playerDiv1 = document.querySelector("#playerOneDiv");
-// let resetButton = document.querySelector('.reset')
+
 
 //radomize the cards-updated by putting in a function so I can use it easier, also decided not to concat array, might change mind later for dryer code.
 const randomize = () => {
@@ -56,6 +56,7 @@ const randomize = () => {
 // randomize();
 
 //create cards put in function
+
 
 const createCards = () => {
   const cardData = randomize(); //call randomize function to get shuffled version of the cards
@@ -86,6 +87,7 @@ const createCards = () => {
     card.addEventListener("click", (event) => {
       card.classList.toggle("toggleCard");
       checkCards(event); //call checkCards function when card is clicked, which will add attribute to specific card.
+     
     });
   });
 };
@@ -112,7 +114,7 @@ const checkCards = (event) => {
 
         if (playerTurn) {
           //starts with player 1
-          playerOneScore.innerText++;
+          playerOneScore.innerText++;    
         } else {
           playerTwoScore.innerText++;
         }
@@ -121,25 +123,23 @@ const checkCards = (event) => {
     
       console.log(matched.length, 'match length', getImages().length, 
       'image length')
-      if (matched.length == getImages().length) {
-        //these both have an array of 16 
+      if (matched.length === getImages().length) { //these both have an array of 16 
         console.log('inside the conditional')
         console.log(playerOneScore.innerText, 'player one', playerTwoScore.innerText, 'player two')
         if (
-          matched.length == 16 &&
-          playerOneScore.innerText > playerTwoScore.innerText
-        ) {
-          console.log(playerOneScore.innerText);
-          alert(`Congratulations Player ${playerOneName.innerText}! You won 🥳`);
+          // matched.length == 16 &&
+          playerOneScore.innerText < playerTwoScore.innerText
+        ) {console.log('player1 score', playerOneScore.innerText);
+          setTimeout(() => alert(`Congratulations ${playerOneName.innerText}! You won 🥳`), 1000);
         } 
-         if ( 
-          matched.length == 16 &&
-          playerTwoScore.innerText > playerOneScore.innerText
-        ) {console.log('player2 score')
-          alert(`Congratulations ${playerTwoName.innerText}! You won 🥳`);
+        if ( 
+          // matched.length == 16 &&
+          playerTwoScore.innerText < playerOneScore.innerText
+        ) {console.log('player2 score', playerTwoScore.innerText)
+          setTimeout(() => alert(`Congratulations ${playerTwoName.innerText}! You won 🥳`), 1000);
         }
         if (playerOneScore.innerText === playerTwoScore.innerText) {
-          alert("It's a Draw! 🤠");
+          setTimeout(() => alert("It's a Draw! 🤠"), 1000);
         }
       }
     
@@ -148,59 +148,58 @@ const checkCards = (event) => {
       playerTurn = !playerTurn; //If NOT a match switch players-use bang operater to return the opposite boolean value.
       flippedCards.forEach((card) => {
         card.classList.remove("flipped"); //once flipped and don't match, the 'flipped' class needs to be removed -referenced on stackOverflow.
-        card.classList.remove("match")
+        card.classList.remove("match")//once flipped and don't match, remove 'match' so array only counts on matched cards.
         setTimeout(() => card.classList.remove("toggleCard"), 2000); //to flip unmatched card back over, remove the animation on the toggleCard. Add a setTimeout so it doesn't immediately turn over.
       });
+      playerOneName.style.textShadow = "5px 5px white"
+      setTimeout(() => playerOneName.style.textShadow = "none", 2000)
+      playerTwoName.style.textShadow = "5px 5px white"
+      setTimeout(() => playerTwoName.style.textShadow = "none", 2000)
     }
   }
 };
 
-// const restartGame = () =>{
-//     randomize()
-//     createCards()
-// }
-//start button function
+//reset button
+
+resetButton.addEventListener('click', (event) => {
+  event.target.disabled = true;
+const stats = document.querySelector("#playerStats") //clear stats for start of game
+  stats.style.display = "none"
+   grid.style.display = "none"
+   playerOneScore.innerText = 0
+   playerTwoScore.innerText = 0
+   playerOneName.innerText = 'Player 1'
+   playerTwoName.innerText = 'Player 2'
+  
+  startButton.disabled = false
+  })
+
+const stats = document.querySelector("#playerStats") //clear stats for start of game
+stats.style.display = "none"
+grid.style.background = "url('/images/think.png')" 
+
+//start button 
 startButton.addEventListener("click", (event) => {
+ 
   alert(
-    "Hello players! Time to test your mental strength with the classic memory game, Concentration. Player One will start the game. Click on a card and try to find its match. If you get a match, keep guessing. If it isn't a match, player 2 will go. The player at the end with the most matches is declared the winner! Click the restart button at the bottom of the page to play again. Have fun and good luck!"
-  );
+    "Hello players! Time to test your mental strength with the classic memory game, Concentration. Player One will start the game. Click on a card and try to find its match. If you get a match, keep guessing. If it isn't a match, player 2 will go. The player at the end with the most matches is declared the winner! Click the restart button to play again. Have fun and good luck!"
+);
   playerOneName.innerText = prompt("What is your name?", "Enter Name");
   playerTwoName.innerText = prompt("What is your name?", "Enter Name");
   event.target.disabled = true; //turn off start button
+
+  playerOneName.style.textShadow = "3px 3px white"//highlight playerOneName to go first
+  const stats = document.querySelector("#playerStats")//add stats for game play
+  stats.style.display = "flex"
+  grid.style.background = "none"
+  resetButton.disabled = false
+
+  createCards();
+  
 });
 
 
-// const checkWinner = (event) =>{
-//   const clicked = event.target;
-//   clicked.classList.add("match"); // added class of match so i can target the length of matched array to see who won the game compared to images array.
-//   const matched = document.querySelectorAll(".match");
-//   // console.log(matched) 
 
-//   console.log(matched.length, 'match length', getImages().length, 
-//   'image length')
-//   if (matched.length == getImages().length) {
-//     //these both have an array of 16 
-//     console.log('inside the conditional')
-//     console.log(playerOneScore.innerText, 'player one', playerTwoScore.innerText, 'player two')
-//     if (
-//       matched.length == 16 &&
-//       playerOneScore.innerText > playerTwoScore.innerText
-//     ) {
-//       console.log(playerOneScore.innerText);
-//       alert(`Congratulations Player ${playerOneName.innerText}! You won 🥳`);
-//     } 
-//      if ( 
-//       matched.length == 16 &&
-//       playerTwoScore.innerText > playerOneScore.innerText
-//     ) {console.log('player2 score')
-//       alert(`Congratulations ${playerTwoName.innerText}! You won 🥳`);
-//     }
-//     if (playerOneScore.innerText === playerTwoScore.innerText) {
-//       alert("It's a Draw! 🤠");
-//     }
-//   }
-// }
 
-createCards();
-//restart 
+
   
