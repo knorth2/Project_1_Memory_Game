@@ -120,28 +120,8 @@ const checkCards = (event) => {
         }
        
       });
-    
-      console.log(matched.length, 'match length', getImages().length, 
-      'image length')
-      if (matched.length === getImages().length) { //these both have an array of 16 
-        console.log('inside the conditional')
-        console.log(playerOneScore.innerText, 'player one', playerTwoScore.innerText, 'player two')
-        if (
-          // matched.length == 16 &&
-          playerOneScore.innerText < playerTwoScore.innerText
-        ) {console.log('player1 score', playerOneScore.innerText);
-          setTimeout(() => alert(`Congratulations ${playerOneName.innerText}! You won 🥳`), 1000);
-        } 
-        if ( 
-          // matched.length == 16 &&
-          playerTwoScore.innerText < playerOneScore.innerText
-        ) {console.log('player2 score', playerTwoScore.innerText)
-          setTimeout(() => alert(`Congratulations ${playerTwoName.innerText}! You won 🥳`), 1000);
-        }
-        if (playerOneScore.innerText === playerTwoScore.innerText) {
-          setTimeout(() => alert("It's a Draw! 🤠"), 1000);
-        }
-      }
+      
+    gameWin(event)//pass event of clicked
     
     } else {
       console.log("not a match");
@@ -159,7 +139,31 @@ const checkCards = (event) => {
   }
 };
 
-const restartGame = () =>{
+const gameWin = (event) => {
+  const clicked = event.target
+  clicked.classList.add("match"); // added class of match so i can target the length of matched array to see who won the game compared to images array.
+  const matched = document.querySelectorAll(".match");
+  // console.log(matched)
+   console.log(matched.length, 'match length', getImages().length, 
+      'image length')
+      if (matched.length === getImages().length) { //these both have an array of 16 
+        console.log('inside the conditional')
+        console.log(playerOneScore.innerText, 'player one', playerTwoScore.innerText, 'player two')
+        if (playerOneScore.innerText > playerTwoScore.innerText){
+          console.log('player1 score', playerOneScore.innerText)
+          setTimeout(() => alert(`Congratulations ${playerOneName.innerText}! You won 🥳`), 1000);
+        } 
+        if (playerTwoScore.innerText > playerOneScore.innerText){
+           console.log('player2 score', playerTwoScore.innerText)
+          setTimeout(() => alert(`Congratulations ${playerTwoName.innerText}! You won 🥳`), 1000);
+        }
+        if (playerOneScore.innerText === playerTwoScore.innerText) {
+          setTimeout(() => alert("It's a Draw! 🤠"), 1000);
+        }
+      }
+}
+
+const resetGame = () =>{
   let cardData = randomize()//get randomized version of cards each time reset button is clicked.
   let front = document.querySelectorAll(".front")
   let cards =  document.querySelectorAll(".card")
@@ -182,11 +186,11 @@ resetButton.addEventListener('click', (event) => {
 
    playerOneScore.innerText = 0//reset scores to 0
    playerTwoScore.innerText = 0
-   playerOneName.innerText = prompt("What is your name?", "Enter Name");//option for different player
-   playerTwoName.innerText = prompt("What is your name?", "Enter Name");
+  //  playerOneName.innerText = prompt("What is your name?", "Enter Name");//option for different player
+  //  playerTwoName.innerText = prompt("What is your name?", "Enter Name");
   
   // startButton.disabled = false
- restartGame()
+ resetGame()
   })
 
 const stats = document.querySelector("#playerStats") //clear stats for start of game
