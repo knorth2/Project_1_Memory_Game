@@ -12,7 +12,7 @@
 
 Below is my project proposal and wireframe-I decided not to go with the presidential theme due to photo selection. I also cut the cards in half using only 12 instead of 24 cards.  I hope you enjoy it! 
 
-
+https://knorth2.github.io/Project_1_Memory_Game/
 
 ## Project Desciption 
 * Presidential Memory Game is a matching game using Presidents faces. When you click a square it will flip over. If the second square you click matches it will remain face up and turn the same color indicating you matched its partner. Continue to click around and find the matching mates. When you have matched all the squares the game will alert that you have won and ask if you want to play again.
