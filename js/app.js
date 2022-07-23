@@ -97,7 +97,7 @@ const checkCards = (event) => {
   const clicked = event.target; //target event property refers to the element whose event listener triggered the event. so pass checkCards function in the eventlistener above.
   clicked.classList.add("flipped"); //add a class of flipped to each card so we can CHECK for a match, addign it to a variable
   const flippedCards = document.querySelectorAll(".flipped");
-  clicked.classList.add("match"); // added class of match so i can target the length of matched array to see who won the game compared to images array.
+  // clicked.classList.add("match"); // added class of match so i can target the length of matched array to see who won the game compared to images array.
   // const matched = document.querySelectorAll(".match");
   // // console.log(matched)
 
@@ -134,7 +134,7 @@ const checkCards = (event) => {
       }
       flippedCards.forEach((card) => {
         card.classList.remove("flipped"); //once flipped and don't match, the 'flipped' class needs to be removed -referenced on stackOverflow.
-        card.classList.remove("match")//once flipped and don't match, remove 'match' so array only counts on matched cards.
+        // card.classList.remove("match")//once flipped and don't match, remove 'match' so array only counts on matched cards.
         setTimeout(() => card.classList.remove("toggleCard"), 2000); //to flip unmatched card back over, remove the animation on the toggleCard. Add a setTimeout so it doesn't immediately turn over.
       });
     }
@@ -148,10 +148,10 @@ const gameWin = (event) => {
   // console.log(matched)
    console.log(matched.length, 'match length', getImages().length, 
       'image length')
-      if (matched.length === getImages().length) { //these both have an array of 16 
+      if (matched.length === 8 &&  getImages().length === 16) { //these both have an array of 16 
         console.log('inside the conditional')
         console.log(playerOneScore.innerText, 'player one', playerTwoScore.innerText, 'player two')
-        if (playerOneScore.innerText < playerTwoScore.innerText){
+        if (playerOneScore.innerText < playerTwoScore.innerText){ //why does this only alert correct player is the sign is wrong??????
           console.log('player1 score', playerOneScore.innerText)
           setTimeout(() => alert(`Congratulations ${playerOneName.innerText}! You won 🥳`), 1000);
         } 
