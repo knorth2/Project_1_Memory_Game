@@ -97,9 +97,9 @@ const checkCards = (event) => {
   const clicked = event.target; //target event property refers to the element whose event listener triggered the event. so pass checkCards function in the eventlistener above.
   clicked.classList.add("flipped"); //add a class of flipped to each card so we can CHECK for a match, addign it to a variable
   const flippedCards = document.querySelectorAll(".flipped");
-  clicked.classList.add("match"); // added class of match so i can target the length of matched array to see who won the game compared to images array.
-  const matched = document.querySelectorAll(".match");
-  // console.log(matched)
+  // clicked.classList.add("match"); // added class of match so i can target the length of matched array to see who won the game compared to images array.
+  // const matched = document.querySelectorAll(".match");
+  // // console.log(matched)
 
   //game logic
   if (flippedCards.length === 2) {
@@ -114,27 +114,29 @@ const checkCards = (event) => {
 
         if (playerTurn) {
           //starts with player 1
-          playerOneScore.innerText++;    
+          playerOneScore.innerText++;     
         } else {
-          playerTwoScore.innerText++;
+          playerTwoScore.innerText++; 
         }
-       
       });
-      
+
     gameWin(event)//pass event of clicked
     
     } else {
       console.log("not a match");
       playerTurn = !playerTurn; //If NOT a match switch players-use bang operater to return the opposite boolean value.
+      if(playerTurn){
+        playerOneName.style.textShadow = "5px 5px white" 
+        playerTwoName.style.textShadow = "none" 
+      }else{
+        playerTwoName.style.textShadow = "5px 5px white" 
+        playerOneName.style.textShadow = "none" 
+      }
       flippedCards.forEach((card) => {
         card.classList.remove("flipped"); //once flipped and don't match, the 'flipped' class needs to be removed -referenced on stackOverflow.
         card.classList.remove("match")//once flipped and don't match, remove 'match' so array only counts on matched cards.
         setTimeout(() => card.classList.remove("toggleCard"), 2000); //to flip unmatched card back over, remove the animation on the toggleCard. Add a setTimeout so it doesn't immediately turn over.
       });
-      playerOneName.style.textShadow = "5px 5px white"
-      setTimeout(() => playerOneName.style.textShadow = "none", 2000)
-      playerTwoName.style.textShadow = "5px 5px white"
-      setTimeout(() => playerTwoName.style.textShadow = "none", 2000)
     }
   }
 };
@@ -149,11 +151,11 @@ const gameWin = (event) => {
       if (matched.length === getImages().length) { //these both have an array of 16 
         console.log('inside the conditional')
         console.log(playerOneScore.innerText, 'player one', playerTwoScore.innerText, 'player two')
-        if (playerOneScore.innerText > playerTwoScore.innerText){
+        if (playerOneScore.innerText < playerTwoScore.innerText){
           console.log('player1 score', playerOneScore.innerText)
           setTimeout(() => alert(`Congratulations ${playerOneName.innerText}! You won 🥳`), 1000);
         } 
-        if (playerTwoScore.innerText > playerOneScore.innerText){
+        if (playerTwoScore.innerText < playerOneScore.innerText){
            console.log('player2 score', playerTwoScore.innerText)
           setTimeout(() => alert(`Congratulations ${playerTwoName.innerText}! You won 🥳`), 1000);
         }
