@@ -14,11 +14,25 @@ font-size: 70px;
 text-decoration: underline;
 }
 
+#gameRules{
+  position: absolute;
+  right: 200px;
+  /* float: right; */
+  width: 550px;
+  height: 350px;
+  border: 5px solid black;
+  padding: 10px;
+  margin-top: 100px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 30px;
+  background-attachment: fixed;
+}
+
 .start{
 font-size: 25px;
 margin-left: 20px;
 margin-right: 10px;
-margin-bottom: 50px;
+margin-bottom: 30px;
 display: inline-block;
 padding: 15px 25px;
 cursor: pointer;
@@ -28,6 +42,7 @@ background-color: black;
 border-radius: 15px;
 box-shadow: 0 9px #999;
 }
+
 .start:hover {background-color: white}
 
 .start:active {
@@ -69,7 +84,7 @@ section {
  grid-gap: 20px;
  perspective: 800px;/*you have to put this on the parent element if you are doing preserve-3d on the child(card) */
  justify-content: center;
- margin-bottom: 80px;
+ margin-bottom: 30px;
 } 
 
 .card {

@@ -201,16 +201,15 @@ grid.style.background = "url('/images/think.png') no-repeat left"
 
 //start button -event listener
 startButton.addEventListener("click", (event) => { 
-  alert(
-    "Hello players! Time to test your mental strength with the classic memory game, Concentration. Player One will start the game. Click on a card and try to find its match. If you get a match, keep guessing. If it isn't a match, player 2 will go. The player at the end with the most matches is declared the winner! Click the restart button to play again. Have fun and good luck!"
-);
-  playerOneName.innerText = prompt("What is your name?", "Enter Name");
-  playerTwoName.innerText = prompt("What is your name?", "Enter Name");
+  playerOneName.innerText = prompt("Player 1, What is your name?", "Enter Name");
+  playerTwoName.innerText = prompt("Player 2, What is your name?", "Enter Name");
   event.target.disabled = true //turn off start button
   playerOneName.style.textShadow = "3px 3px white"//highlight playerOneName to go first
   const stats = document.querySelector("#playerStats")//add stats for game play
   stats.style.display = "flex"
   grid.style.background = "none"
+  const gameRules = document.querySelector('#gameRules')
+  gameRules.style.display = "none"
   // resetButton.disabled = false
 
   createCards();
