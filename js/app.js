@@ -97,7 +97,7 @@ const checkCards = (event) => {
   const clicked = event.target; //target event property refers to the element whose event listener triggered the event. so pass checkCards function in the eventlistener above.
   clicked.classList.add("flipped"); //add a class of flipped to each card so we can CHECK for a match, addign it to a variable
   const flippedCards = document.querySelectorAll(".flipped");
-  // clicked.classList.add("match"); // added class of match so i can target the length of matched array to see who won the game compared to images array.
+  clicked.classList.add("match"); // added class of match so i can target the length of matched array to see who won the game compared to images array.
   // const matched = document.querySelectorAll(".match");
   // // console.log(matched)
 
@@ -114,9 +114,9 @@ const checkCards = (event) => {
 
         if (playerTurn) {
           //starts with player 1
-          playerOneScore.innerText++;     
+          playerOneScore.innerText ++;     
         } else {
-          playerTwoScore.innerText++; 
+          playerTwoScore.innerText ++; 
         }
       });
 
@@ -151,11 +151,11 @@ const gameWin = (event) => {
       if (matched.length === getImages().length) { //these both have an array of 16 
         console.log('inside the conditional')
         console.log(playerOneScore.innerText, 'player one', playerTwoScore.innerText, 'player two')
-        if (playerOneScore.innerText < playerTwoScore.innerText){
+        if (playerOneScore.innerText > playerTwoScore.innerText){
           console.log('player1 score', playerOneScore.innerText)
           setTimeout(() => alert(`Congratulations ${playerOneName.innerText}! You won 🥳`), 1000);
         } 
-        if (playerTwoScore.innerText < playerOneScore.innerText){
+        if (playerTwoScore.innerText > playerOneScore.innerText){
            console.log('player2 score', playerTwoScore.innerText)
           setTimeout(() => alert(`Congratulations ${playerTwoName.innerText}! You won 🥳`), 1000);
         }
@@ -201,8 +201,8 @@ grid.style.background = "url('/images/think.png') no-repeat left"
 
 //start button -event listener
 startButton.addEventListener("click", (event) => { 
-  playerOneName.innerText = prompt("Player 1, What is your name?", "Enter Name");
-  playerTwoName.innerText = prompt("Player 2, What is your name?", "Enter Name");
+  playerOneName.innerText = prompt("What is your name?", "Player 1");
+  playerTwoName.innerText = prompt("Player 2, What is your name?", "Player 2");
   event.target.disabled = true //turn off start button
   playerOneName.style.textShadow = "3px 3px white"//highlight playerOneName to go first
   const stats = document.querySelector("#playerStats")//add stats for game play
