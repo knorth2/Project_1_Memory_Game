@@ -151,11 +151,11 @@ const gameWin = (event) => {
       if (matched.length === getImages().length) { //these both have an array of 16 
         console.log('inside the conditional')
         console.log(playerOneScore.innerText, 'player one', playerTwoScore.innerText, 'player two')
-        if (playerOneScore.innerText > playerTwoScore.innerText){
+        if (playerOneScore.innerText < playerTwoScore.innerText){
           console.log('player1 score', playerOneScore.innerText)
           setTimeout(() => alert(`Congratulations ${playerOneName.innerText}! You won 🥳`), 1000);
         } 
-        if (playerTwoScore.innerText > playerOneScore.innerText){
+        if (playerTwoScore.innerText < playerOneScore.innerText){
            console.log('player2 score', playerTwoScore.innerText)
           setTimeout(() => alert(`Congratulations ${playerTwoName.innerText}! You won 🥳`), 1000);
         }
@@ -197,7 +197,7 @@ resetButton.addEventListener('click', (event) => {
 
 const stats = document.querySelector("#playerStats") //clear stats for start of game
 stats.style.display = "none"
-grid.style.background = "url('./images/think.png') no-repeat left" 
+grid.style.background = "url('../images/think.png') no-repeat left" 
 
 //start button -event listener
 startButton.addEventListener("click", (event) => { 
