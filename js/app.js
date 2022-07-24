@@ -12,6 +12,7 @@
 //enable start button once clicked.
 //link new board once shuffled to start game.
 
+
 //Card Array with linked images - array of objects for easier grabbing
 const getImages = () => [
   { imgSrc: "./images/apple.png", name: "apple" },
@@ -146,23 +147,19 @@ const gameWin = (event) => {
   clicked.classList.add("match"); // added class of match so i can target the length of matched array to see who won the game compared to images array.
   const matched = document.querySelectorAll(".match");
   // console.log(matched)
-   console.log(matched.length, 'match length', getImages().length, 
-      'image length')
-      if (matched.length === 8 &&  getImages().length === 16) { //these both have an array of 16 
-        console.log('inside the conditional')
-        console.log(playerOneScore.innerText, 'player one', playerTwoScore.innerText, 'player two')
-        if (playerOneScore.innerText < playerTwoScore.innerText){ //why does this only alert correct player is the sign is wrong??????
+   console.log(matched.length, 'match length')
+        if (matched.length === 8 && playerOneScore.innerText < playerTwoScore.innerText){ //why does this only alert correct player if the sign is wrong??????
           console.log('player1 score', playerOneScore.innerText)
           setTimeout(() => alert(`Congratulations ${playerOneName.innerText}! You won 🥳`), 1000);
         } 
-        if (playerTwoScore.innerText < playerOneScore.innerText){
+        if (matched.length === 8 && playerTwoScore.innerText < playerOneScore.innerText){
            console.log('player2 score', playerTwoScore.innerText)
           setTimeout(() => alert(`Congratulations ${playerTwoName.innerText}! You won 🥳`), 1000);
         }
-        if (playerOneScore.innerText === playerTwoScore.innerText) {
+        if (matched.length === 8 && playerOneScore.innerText === playerTwoScore.innerText) {
           setTimeout(() => alert("It's a Draw! 🤠"), 1000);
         }
-      }
+      // }
 }
 
 const resetGame = () =>{
@@ -181,7 +178,7 @@ const resetGame = () =>{
   })
 }
 
-//reset button-why wont it work if i just add the createCards() function in here??
+//reset button-
 
 resetButton.addEventListener('click', (event) => {
   event.target//.disabled = true;
@@ -197,7 +194,7 @@ resetButton.addEventListener('click', (event) => {
 
 const stats = document.querySelector("#playerStats") //clear stats for start of game
 stats.style.display = "none"
-grid.style.background = "url('.../images/thinking.png') no-repeat left" 
+grid.style.background = "url('./images/thinking.png') no-repeat left" 
 
 //start button -event listener
 startButton.addEventListener("click", (event) => { 
