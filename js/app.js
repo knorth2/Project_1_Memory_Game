@@ -135,7 +135,7 @@ const checkCards = (event) => {
       }
       flippedCards.forEach((card) => {
         card.classList.remove("flipped"); //once flipped and don't match, the 'flipped' class needs to be removed -referenced on stackOverflow.
-        // card.classList.remove("match")//once flipped and don't match, remove 'match' so array only counts on matched cards.
+        card.classList.remove("match")//once flipped and don't match, remove 'match' so array only counts on matched cards.
         setTimeout(() => card.classList.remove("toggleCard"), 2000); //to flip unmatched card back over, remove the animation on the toggleCard. Add a setTimeout so it doesn't immediately turn over.
       });
     }
@@ -187,7 +187,7 @@ resetButton.addEventListener('click', (event) => {
    playerTwoScore.innerText = 0
   //  playerOneName.innerText = prompt("What is your name?", "Enter Name");//option for different player
   //  playerTwoName.innerText = prompt("What is your name?", "Enter Name");
-  
+  playerOneName.style.textShadow = "3px 3px white"//highlight playerOneName to go first
   // startButton.disabled = false
  resetGame()
   })
