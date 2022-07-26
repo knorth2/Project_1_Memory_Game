@@ -188,6 +188,7 @@ resetButton.addEventListener('click', (event) => {
   //  playerOneName.innerText = prompt("What is your name?", "Enter Name");//option for different player
   //  playerTwoName.innerText = prompt("What is your name?", "Enter Name");
   playerOneName.style.textShadow = "3px 3px white"//highlight playerOneName to go first
+  playerTwoName.style.textShadow = "none"
   // startButton.disabled = false
  resetGame()
   })
