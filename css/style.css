@@ -3,15 +3,18 @@
 body {
   
   background: aquamarine;
-  background-size: cover;  
-  background-attachment: fixed; 
-  
+  /* background-size: cover;  
+  background-attachment: fixed;  */
+  /* position: relative; */
+  /* min-height: 100vh;  */
 }
 
 h1{
 text-align: center;
-font-size: 70px;
+font-size: 80px;
 text-decoration: underline;
+margin-top: 0px;
+margin-bottom: 20px;
 }
 
 #gameRules{
@@ -22,7 +25,7 @@ text-decoration: underline;
   height: 350px;
   border: 5px solid black;
   padding: 10px;
-  margin-top: 100px;
+  margin-top: 150px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 30px;
   background-attachment: fixed;
@@ -30,7 +33,7 @@ text-decoration: underline;
 
 .start{
 font-size: 25px;
-margin-left: 20px;
+margin-left: 40px;
 margin-right: 10px;
 margin-bottom: 30px;
 display: inline-block;
@@ -73,8 +76,18 @@ box-shadow: 0 9px #999;
 #playerStats{
   display: flex;
   justify-content: space-around;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   font-size: 30px;
+ 
+}
+#player1div{
+  border: 3px solid black;
+  padding: 20px
+}
+
+#player2div{
+  border: 3px solid black;
+  padding: 20px
 }
 
 section {
@@ -84,7 +97,7 @@ section {
  grid-gap: 20px;
  perspective: 800px;/*you have to put this on the parent element if you are doing preserve-3d on the child(card) */
  justify-content: center;
- margin-bottom: 30px;
+ margin-bottom: 20px;
 } 
 
 .card {

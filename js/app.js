@@ -195,7 +195,7 @@ resetButton.addEventListener('click', (event) => {
 
 const stats = document.querySelector("#playerStats") //clear stats for start of game
 stats.style.display = "none"
-grid.style.background = "url('./images/thinking.png') no-repeat left" 
+grid.style.background = "url('./images/thinking.png') no-repeat left / contain" 
 
 //start button -event listener
 startButton.addEventListener("click", (event) => { 
