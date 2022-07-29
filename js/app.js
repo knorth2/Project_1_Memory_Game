@@ -127,10 +127,10 @@ const checkCards = (event) => {
       console.log("not a match");
       playerTurn = !playerTurn; //If NOT a match switch players-use bang operater to return the opposite boolean value.
       if(playerTurn){
-        playerOneName.style.textShadow = "5px 5px white" 
+        playerOneName.style.textShadow = "2px 2px white" 
         playerTwoName.style.textShadow = "none" 
       }else{
-        playerTwoName.style.textShadow = "5px 5px white" 
+        playerTwoName.style.textShadow = "2px 2px white" 
         playerOneName.style.textShadow = "none" 
       }
       flippedCards.forEach((card) => {
@@ -187,7 +187,7 @@ resetButton.addEventListener('click', (event) => {
    playerTwoScore.innerText = 0
   //  playerOneName.innerText = prompt("What is your name?", "Enter Name");//option for different player
   //  playerTwoName.innerText = prompt("What is your name?", "Enter Name");
-  playerOneName.style.textShadow = "3px 3px white"//highlight playerOneName to go first
+  playerOneName.style.textShadow = "2px 2px white"//highlight playerOneName to go first
   playerTwoName.style.textShadow = "none"
   // startButton.disabled = false
  resetGame()
@@ -202,7 +202,7 @@ startButton.addEventListener("click", (event) => {
   playerOneName.innerText = prompt("What is your name?", "Player 1");
   playerTwoName.innerText = prompt("Player 2, What is your name?", "Player 2");
   event.target.disabled = true //turn off start button
-  playerOneName.style.textShadow = "3px 3px white"//highlight playerOneName to go first
+  playerOneName.style.textShadow = "2px 2px white"//highlight playerOneName to go first
   const stats = document.querySelector("#playerStats")//add stats for game play
   stats.style.display = "flex"
   grid.style.background = "none"

@@ -78,7 +78,13 @@ box-shadow: 0 9px #999;
   justify-content: space-around;
   margin-bottom: 20px;
   font-size: 30px;
- 
+}
+
+.playerOneName{
+  text-decoration: underline;
+}
+.playerTwoName{
+  text-decoration: underline;
 }
 #player1div{
   border: 3px solid black;
