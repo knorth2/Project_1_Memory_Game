@@ -6,7 +6,7 @@
 
 * Currently the game can only be played on a desktop browser so there is no installation required. 
 * HTML, CSS and Javascript
-* Unsolved Problems:upside_down_face::  I found that in my game "Win" logic it randomly wouldn't alert the correct player won.
+* Unsolved Problems:upside_down_face::  'Win' logic is a little buggy🐛
 * Forthcoming features:  I would like to add sound effects to the cards when flipped and matched vs flipped and don't match. I would also like to make my game playable on other devices.
 
 
